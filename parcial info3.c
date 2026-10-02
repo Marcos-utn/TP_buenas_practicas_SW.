@@ -1,15 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct tanque{
+	char sector[10];
+	char nombretanque[10];
+	int *nivel;
+}tan[10];
+
+void crear_tanque();
+
+void buscar_tanque();
+
 int main() {
-	int o;
+	int opcion;
 	int com,coma;
 	char bus[10],busa[10];
-	struct tanque{
-		char sector[10];
-		char nombretanque[10];
-		int *nivel;
-	}tan[10];
+	
 	int i,k,a=0,c=0,y,x,l;
 	
 	do{
@@ -18,45 +24,17 @@ int main() {
 		printf("3-tanques con menor nivel(requiere minimo 2 tanques)\n");
 		printf("4-cambiar nivel\n");
 		
-	scanf("%d",&o);
+	scanf("%d",&opcion);
 
-	switch(o){
+	switch(opcion){
 	case 1:
-		tan[a].nivel=(int*)malloc(sizeof(int));
-		
-		printf("sector\n");
-		scanf("%s",&tan[a].sector);
-		printf("nombre de tanque\n");
-		scanf("%s",&tan[a].nombretanque);
-		
-		do{
-		printf("nivel\n");
-		scanf("%d",&*tan[a].nivel);
-		}
-		while(100<*tan[a].nivel||0>*tan[a].nivel);
+		crear_tanque();
 		a=a+1;
 		
 		break;
 	case 2:
-		printf("sector\n");
-		scanf("%s",&bus);
-		printf("nombre\n");
-		scanf("%s",&busa);
-		for(i=0;i<a;i++){
-			
-			com=strcmp(bus,tan[i].sector);
-			
-			coma=strcmp(busa,tan[i].nombretanque);
-			
-			
-			if(com==0&&coma==0){
-				printf("sector:%s\n",tan[i].sector);
-				printf("tanque:%s\n",tan[i].nombretanque);
-				printf("nivel:%d\n",*tan[i].nivel);
-			i=20;
-			}
-			
-		}
+		
+		buscar_tanque();
 		
 		break;
 	case 3:
@@ -124,11 +102,48 @@ int main() {
 	
 	}
 	}
-	while(o!=5);
+	while(opcion!=5);
 		  
 	
 	
-	
-
 }
+void crear_tanque(){
 
+	int a=0,i=0;
+	tan[a].nivel=(int*)malloc(sizeof(int));
+	
+	printf("sector\n");
+	scanf("%s",&tan[a].sector);
+	printf("nombre de tanque\n");
+	scanf("%s",&tan[a].nombretanque);
+	do{
+		printf("nivel\n");
+		scanf("%d",&*tan[a].nivel);
+	}
+	while(100<*tan[a].nivel||0>*tan[a].nivel);
+	
+}
+	void buscar_tanque(){
+		int i=0,a=0;
+		char bus[10],busa[10];
+		int com,coma;
+		printf("sector\n");
+		scanf("%s",&bus);
+		printf("nombre\n");
+		scanf("%s",&busa);
+		for(i=0;i<a;i++){
+			
+			com=strcmp(bus,tan[i].sector);
+			
+			coma=strcmp(busa,tan[i].nombretanque);
+			
+			
+			if(com==0&&coma==0){
+				printf("sector:%s\n",tan[i].sector);
+				printf("tanque:%s\n",tan[i].nombretanque);
+				printf("nivel:%d\n",*tan[i].nivel);
+				i=20;
+			}
+			
+		}
+	};
