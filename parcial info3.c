@@ -7,9 +7,11 @@ struct tanque{
 	int *nivel;
 }tan[10];
 
-void crear_tanque();
+void crear_tanque(int);
 
-void buscar_tanque();
+void buscar_tanque(int );
+
+void menor_tanque(int );
 
 int main() {
 	int opcion;
@@ -28,45 +30,20 @@ int main() {
 
 	switch(opcion){
 	case 1:
-		crear_tanque();
+		crear_tanque(a);
 		a=a+1;
 		
 		break;
 	case 2:
 		
-		buscar_tanque();
+		buscar_tanque(a);
 		
 		break;
 	case 3:
 		
-		for(i=0;i<100;i++){
-			
+		menor_tanque(a);
 		
 		
-			for(k=0;k<a;k++){
-				
-				if(*tan[k].nivel==i){
-					
-				
-				if(c==0){
-					y=k;
-					
-				}
-				if(c==1){
-					x=k;
-					printf("sector:%s\n",tan[y].sector);
-					printf("nombre:%s\n",tan[y].nombretanque);
-					printf("nivel:%d\n",*tan[y].nivel);
-					printf("sector:%s\n",tan[x].sector);
-					printf("tanque:%s\n",tan[x].nombretanque);
-					printf("nivel:%d\n",*tan[x].nivel);
-				}
-				
-				c=c+1;
-			}
-		}
-		}
-		c=0;
 		break;	
 		case 4:
 			printf("sector\n");
@@ -107,9 +84,9 @@ int main() {
 	
 	
 }
-void crear_tanque(){
+void crear_tanque(int a){
 
-	int a=0,i=0;
+	int i=0;
 	tan[a].nivel=(int*)malloc(sizeof(int));
 	
 	printf("sector\n");
@@ -123,8 +100,8 @@ void crear_tanque(){
 	while(100<*tan[a].nivel||0>*tan[a].nivel);
 	
 }
-	void buscar_tanque(){
-		int i=0,a=0;
+	void buscar_tanque(int a){
+		int i=0;
 		char bus[10],busa[10];
 		int com,coma;
 		printf("sector\n");
@@ -146,4 +123,35 @@ void crear_tanque(){
 			}
 			
 		}
-	};
+	}
+void menor_tanque(int a){
+	int i,y,k,c=0,x;
+	for(i=0;i<100;i++){
+		
+		
+		
+		for(k=0;k<a;k++){
+			
+			if(*tan[k].nivel==i){
+				
+				
+				if(c==0){
+					y=k;
+					
+				}
+				if(c==1){
+					x=k;
+					printf("sector:%s\n",tan[y].sector);
+					printf("nombre:%s\n",tan[y].nombretanque);
+					printf("nivel:%d\n",*tan[y].nivel);
+					printf("sector:%s\n",tan[x].sector);
+					printf("tanque:%s\n",tan[x].nombretanque);
+					printf("nivel:%d\n",*tan[x].nivel);
+				}
+				
+				c=c+1;
+			}
+		}
+	}
+	c=0;
+}
