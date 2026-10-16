@@ -9,13 +9,13 @@ struct tanque{
 
 void crear_tanque(int);
 
-void buscar_tanque(int );
+void buscar_tanque(int);
 
-void menor_tanque(int );
+void menor_tanque(int);
 
+void cambiar_nivel(int,char[10],char[10]);
 int main() {
 	int opcion;
-	int com,coma;
 	char bus[10],busa[10];
 	
 	int i,k,a=0,c=0,y,x,l;
@@ -50,28 +50,7 @@ int main() {
 			scanf("%s",&bus);
 			printf("nombre\n");
 			scanf("%s",&busa);
-			for(i=0;i<a;i++){
-				
-				com=strcmp(bus,tan[i].sector);
-				
-				coma=strcmp(busa,tan[i].nombretanque);
-				
-				
-				if(com==0&&coma==0){
-					printf("sector:%s\n",tan[i].sector);
-					printf("tanque:%s\n",tan[i].nombretanque);
-					printf("nuevo nivel:");
-					tan[i].nivel=(int*)realloc(tan[i].nivel,sizeof(int));
-					do{
-					scanf("%d",&*tan[i].nivel);
-					printf("nivel:%d\n",*tan[i].nivel);
-				}
-				while(100<*tan[i].nivel||0>*tan[i].nivel);
-					i=20;
-				}
-				
-			}
-			
+			cambiar_nivel(a,bus,busa);
 			break;
 		
 	default:;
@@ -154,4 +133,30 @@ void menor_tanque(int a){
 		}
 	}
 	c=0;
+}
+void cambiar_nivel(int a,char bus[10],char busa[10]){
+	
+	int i;
+		int com,coma;
+	for(i=0;i<a;i++){
+		
+		com=strcmp(bus,tan[i].sector);
+		
+		coma=strcmp(busa,tan[i].nombretanque);
+		
+		
+		if(com==0&&coma==0){
+			printf("sector:%s\n",tan[i].sector);
+			printf("tanque:%s\n",tan[i].nombretanque);
+			printf("nuevo nivel:");
+			tan[i].nivel=(int*)realloc(tan[i].nivel,sizeof(int));
+			do{
+				scanf("%d",&*tan[i].nivel);
+				printf("nivel:%d\n",*tan[i].nivel);
+			}
+			while(100<*tan[i].nivel||0>*tan[i].nivel);
+			i=20;
+		}
+		
+	}
 }
