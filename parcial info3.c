@@ -18,7 +18,7 @@ int main() {
 	int opcion;
 	char bus[10],busa[10];
 	
-	int i,k,a=0,c=0,y,x,l;
+	int k,cant_tanques=0,c=0,y,x,l;
 	
 	do{
 		printf("1-crear tanque\n");
@@ -30,18 +30,18 @@ int main() {
 
 	switch(opcion){
 	case 1:
-		crear_tanque(a);
-		a=a+1;
+		crear_tanque(cant_tanques);
+		cant_tanques=cant_tanques+1;
 		
 		break;
 	case 2:
 		
-		buscar_tanque(a);
+		buscar_tanque(cant_tanques);
 		
 		break;
 	case 3:
 		
-		menor_tanque(a);
+		menor_tanque(cant_tanques);
 		
 		
 		break;	
@@ -50,7 +50,7 @@ int main() {
 			scanf("%s",&bus);
 			printf("nombre\n");
 			scanf("%s",&busa);
-			cambiar_nivel(a,bus,busa);
+			cambiar_nivel(cant_tanques,bus,busa);
 			break;
 		
 	default:;
@@ -63,63 +63,63 @@ int main() {
 	
 	
 }
-void crear_tanque(int a){
+void crear_tanque(int cant_tanques){
 
-	int i=0;
-	tan[a].nivel=(int*)malloc(sizeof(int));
+	int repe=0;
+	tan[cant_tanques].nivel=(int*)malloc(sizeof(int));
 	
 	printf("sector\n");
-	scanf("%s",&tan[a].sector);
+	scanf("%s",&tan[cant_tanques].sector);
 	printf("nombre de tanque\n");
-	scanf("%s",&tan[a].nombretanque);
+	scanf("%s",&tan[cant_tanques].nombretanque);
 	do{
 		printf("nivel\n");
-		scanf("%d",&*tan[a].nivel);
+		scanf("%d",&*tan[cant_tanques].nivel);
 	}
-	while(100<*tan[a].nivel||0>*tan[a].nivel);
+	while(100<*tan[cant_tanques].nivel||0>*tan[cant_tanques].nivel);
 	
 }
-	void buscar_tanque(int a){
-		int i=0;
+	void buscar_tanque(int cant_tanques){
+		int repe=0;
 		char bus[10],busa[10];
 		int com,coma;
 		printf("sector\n");
 		scanf("%s",&bus);
 		printf("nombre\n");
 		scanf("%s",&busa);
-		for(i=0;i<a;i++){
+		for(repe=0;repe<cant_tanques;repe++){
 			
-			com=strcmp(bus,tan[i].sector);
+			com=strcmp(bus,tan[repe].sector);
 			
-			coma=strcmp(busa,tan[i].nombretanque);
+			coma=strcmp(busa,tan[repe].nombretanque);
 			
 			
 			if(com==0&&coma==0){
-				printf("sector:%s\n",tan[i].sector);
-				printf("tanque:%s\n",tan[i].nombretanque);
-				printf("nivel:%d\n",*tan[i].nivel);
-				i=20;
+				printf("sector:%s\n",tan[repe].sector);
+				printf("tanque:%s\n",tan[repe].nombretanque);
+				printf("nivel:%d\n",*tan[repe].nivel);
+				repe=20;
 			}
 			
 		}
 	}
-void menor_tanque(int a){
-	int i,y,k,c=0,x;
-	for(i=0;i<100;i++){
+void menor_tanque(int cant_tanques){
+	int repe,y,repe1,c=0,x;
+	for(repe=0;repe<100;repe++){
 		
 		
 		
-		for(k=0;k<a;k++){
+		for(repe1=0;repe1<cant_tanques;repe1++){
 			
-			if(*tan[k].nivel==i){
+			if(*tan[repe1].nivel==repe){
 				
 				
 				if(c==0){
-					y=k;
+					y=repe1;
 					
 				}
 				if(c==1){
-					x=k;
+					x=repe1;
 					printf("sector:%s\n",tan[y].sector);
 					printf("nombre:%s\n",tan[y].nombretanque);
 					printf("nivel:%d\n",*tan[y].nivel);
@@ -134,28 +134,28 @@ void menor_tanque(int a){
 	}
 	c=0;
 }
-void cambiar_nivel(int a,char bus[10],char busa[10]){
+void cambiar_nivel(int Cant_tanques,char bus[10],char busa[10]){
 	
-	int i;
+	int repe;
 		int com,coma;
-	for(i=0;i<a;i++){
+	for(repe=0;repe<Cant_tanques;repe++){
 		
-		com=strcmp(bus,tan[i].sector);
+		com=strcmp(bus,tan[repe].sector);
 		
-		coma=strcmp(busa,tan[i].nombretanque);
+		coma=strcmp(busa,tan[repe].nombretanque);
 		
 		
 		if(com==0&&coma==0){
-			printf("sector:%s\n",tan[i].sector);
-			printf("tanque:%s\n",tan[i].nombretanque);
+			printf("sector:%s\n",tan[repe].sector);
+			printf("tanque:%s\n",tan[repe].nombretanque);
 			printf("nuevo nivel:");
-			tan[i].nivel=(int*)realloc(tan[i].nivel,sizeof(int));
+			tan[repe].nivel=(int*)realloc(tan[repe].nivel,sizeof(int));
 			do{
-				scanf("%d",&*tan[i].nivel);
-				printf("nivel:%d\n",*tan[i].nivel);
+				scanf("%d",&*tan[repe].nivel);
+				printf("nivel:%d\n",*tan[repe].nivel);
 			}
-			while(100<*tan[i].nivel||0>*tan[i].nivel);
-			i=20;
+			while(100<*tan[repe].nivel||0>*tan[repe].nivel);
+			repe=20;
 		}
 		
 	}
