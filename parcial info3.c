@@ -104,7 +104,7 @@ void crear_tanque(int cant_tanques){
 		}
 	}
 void menor_tanque(int cant_tanques){
-	int repe,y,repe1,c=0,x;
+	int repe,menor1,repe1,conta=0,menor2;
 	for(repe=0;repe<100;repe++){
 		
 		
@@ -114,25 +114,25 @@ void menor_tanque(int cant_tanques){
 			if(*tan[repe1].nivel==repe){
 				
 				
-				if(c==0){
-					y=repe1;
+				if(conta==0){
+					menor1=repe1;
 					
 				}
-				if(c==1){
-					x=repe1;
-					printf("sector:%s\n",tan[y].sector);
-					printf("nombre:%s\n",tan[y].nombretanque);
-					printf("nivel:%d\n",*tan[y].nivel);
-					printf("sector:%s\n",tan[x].sector);
-					printf("tanque:%s\n",tan[x].nombretanque);
-					printf("nivel:%d\n",*tan[x].nivel);
+				if(conta==1){
+				menor2=repe1;
+					printf("sector:%s\n",tan[menor1].sector);
+					printf("nombre:%s\n",tan[menor1].nombretanque);
+					printf("nivel:%d\n",*tan[menor1].nivel);
+					printf("sector:%s\n",tan[menor2].sector);
+					printf("tanque:%s\n",tan[menor2].nombretanque);
+					printf("nivel:%d\n",*tan[menor2].nivel);
 				}
 				
-				c=c+1;
+				conta=conta+1;
 			}
 		}
 	}
-	c=0;
+	conta=0;
 }
 void cambiar_nivel(int Cant_tanques,char bus[10],char busa[10]){
 	
